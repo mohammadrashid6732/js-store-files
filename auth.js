@@ -1,5 +1,7 @@
 import postData from "./utils/httpReq.js";
-import { getCookies, setCookies } from "./utils/cookie.js";
+import { setCookies } from "./utils/cookie.js";
+import authHandler from "./utils/authorization.js";
+import validationForm from "./utils/validation.js";
 
 const inputBox = document.querySelectorAll("input");
 const loginButton = document.querySelector("button");
@@ -9,17 +11,13 @@ const submitHandler = async (event) => {
   const username = inputBox[0].value;
   const password = inputBox[1].value;
 
+  const validation = validationForm(username, password);
+  if (!validation) return;
+
   const response = await postData("auth/login", { username, password });
   console.log(response);
   setCookies(response.token);
 };
 
-const initHandler = () => {
-  const cookie = getCookies();
-  if (cookie) {
-    location.assign("index.html");
-  }
-};
-
 loginButton.addEventListener("click", submitHandler);
-document.addEventListener("DOMContentLoaded", initHandler);
+document.addEventListener("DOMContentLoaded", authHandler);
