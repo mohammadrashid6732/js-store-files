@@ -14,4 +14,13 @@ const postData = async (path, data) => {
   }
 };
 
-export default postData;
+const getProducts = async (path) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${path}`);
+    const json = response.json();
+    return json;
+  } catch (error) {
+    alert("An error occurred");
+  }
+};
+export { postData, getProducts };
