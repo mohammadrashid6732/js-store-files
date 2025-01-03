@@ -21,6 +21,7 @@ const getProducts = async (path) => {
     return json;
   } catch (error) {
     alert("An error occurred");
+    console.log(error)
   }
 };
 export { postData, getProducts };

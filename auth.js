@@ -1,4 +1,4 @@
-import postData from "./utils/httpReq.js";
+import { postData } from "./utils/httpReq.js";
 import { setCookies } from "./utils/cookie.js";
 import authHandler from "./utils/authorization.js";
 import validationForm from "./utils/validation.js";
