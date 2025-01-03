@@ -14,14 +14,14 @@ const postData = async (path, data) => {
   }
 };
 
-const getProducts = async (path) => {
+const getData = async (path) => {
   try {
     const response = await fetch(`${BASE_URL}/${path}`);
     const json = response.json();
     return json;
   } catch (error) {
     alert("An error occurred");
-    console.log(error)
+    console.log(error);
   }
 };
-export { postData, getProducts };
+export { postData, getData };

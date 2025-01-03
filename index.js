@@ -1,5 +1,5 @@
 import { getCookies } from "./utils/cookie.js";
-import { getProducts } from "./utils/httpReq.js";
+import { getData } from "./utils/httpReq.js";
 import { shortenText } from "./utils/stringFun.js";
 
 const loginButton = document.getElementById("login");
@@ -50,7 +50,7 @@ const init = async () => {
   } else {
     dashboardButton.style.display = "none";
   }
-  allProducts = await getProducts("products");
+  allProducts = await getData("products");
   showProducts(allProducts);
   console.log(allProducts);
 };
